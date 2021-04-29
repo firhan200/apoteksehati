@@ -1,0 +1,41 @@
+body{background-color:#fff;font-family:Verdana}
+.pad-t{padding-top:70px;}
+.navbar{background-color:#769C5D;border:0px;}
+.navbar-default .navbar-nav > li > a{color:#fff;font-size:10pt;}
+.navbar-default .navbar-nav > li > a:focus,
+.navbar-default .navbar-nav > li > a:active,
+.navbar-default .navbar-nav > li > a:hover{color:#fff;background-color:#85CA5B;}
+.navbar-default .navbar-nav > .active a,
+.navbar-default .navbar-nav > .active a:hover{color:#fff;background-color:#85CA5B;}
+.navbar-default .navbar-header > a,
+.navbar-default .navbar-header > a:hover,
+.navbar-default .navbar-header > a:active,
+.navbar-default .navbar-header > a:focus{color:#fff;}
+.title-t{font-size:18pt;margin-bottom:5px;}
+.brand-t > p{font-size:10pt;color:#696969;margin-bottom:20px;}
+.flip-t{width:150px;max-height:150px;font-size:60pt;opacity:0.8;-webkit-transition:0.5s;-moz-transition:0.5s;-o-transition:0.5s;margin-bottom:20px;}
+.flip-t:hover{
+	opacity:1;
+    -ms-transform: rotate(360deg); /* IE 9 */
+    -webkit-transform: rotate(360deg); /* Chrome, Safari, Opera */
+    transform: rotate(360deg);
+}
+.subfooter{margin-top:50px;background-color:#73985B;color:#e6e6e6;padding:20px;}
+.footer{background-color:#53753E;color:#e6e6e6;padding:20px;}
+.link-def{color:#e6e6e6;text-decoration:none}
+.link-def:hover{color:#fff;text-decoration:underline;}
+.section-t{background-color:#69954E;color:#F0FAED;padding:30px;}
+.title-content{font-size:14pt;background-color:#d9534f;color:#f8f8f8;padding:10px;box-shadow:1px 1px 2px #696969;}
+.box-t{border:1px solid #bdbdbd;padding:20px;box-shadow:1px 1px 2px #696969;}
+.title{font-size:24pt;font-family:arial;text-align:center;margin-bottom:50px;}
+.sep{height:4px;background-color:#525252;width:200px;margin:0 auto;margin-top:5px;}
+.mytable{border:1px solid #69954E;}
+.mytable > thead{background-color:#69954E;color:#F0FAED;}
+.badge1{background-color:#69954E;color:#F0FAED;width:100px;text-align:center;padding:10px;}
+.badge2{background-color:#944343;color:#FAEDED;width:100px;text-align:center;padding:10px;}
+.strip-t{background:url("../img/strip.png");background-size:cover;height:10px;margin-top:50px;}
+@media (max-width: 1068px) {
+  .mytable thead, tbody{
+        font-size:7pt;
+    }
+}

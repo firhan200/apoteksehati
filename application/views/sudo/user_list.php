@@ -35,8 +35,8 @@
 					<td><?php echo $result->email; ?></td>
 					<td><?php echo $result->is_active ? 'Aktif' : 'Tidak Aktif'; ?></td>
 					<td>
-						<a href="<?php echo site_url('sudo/slider/ubah/'.$result->id); ?>"><button type="button" class="btn btn-sm btn-default">Ubah</button></a>
-						<a href="<?php echo site_url('sudo/slider/hapus/'.$result->id); ?>" onclick="return confirm('Hapus slider?')"><button type="button" class="btn btn-sm btn-danger">Hapus</button></a>
+						<a href="<?php echo site_url('sudo/user/ubah/'.$result->id); ?>"><button type="button" class="btn btn-sm btn-default">Ubah</button></a>
+						<a href="<?php echo site_url('sudo/user/hapus/'.$result->id); ?>" onclick="return confirm('Hapus user?')"><button type="button" class="btn btn-sm btn-danger">Hapus</button></a>
 					</td>
 				</tr>
 				<?php

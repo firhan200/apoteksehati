@@ -31,7 +31,7 @@
 					<li <?php if(isset($tab4)) echo 'class="active"'; ?>><a href="<?php echo site_url('sudo/pekerjaan'); ?>">Pekerjaan</a></li>										
 					<li <?php if(isset($tab5)) echo 'class="active"'; ?>><a href="<?php echo site_url('sudo/foto'); ?>">Foto</a></li>										
 					<li <?php if(isset($tab6)) echo 'class="active"'; ?>><a href="<?php echo site_url('sudo/profil'); ?>">Profil</a></li>	
-					<li <?php if(isset($tab6)) echo 'class="active"'; ?>><a href="<?php echo site_url('sudo/user'); ?>">Users</a></li>	
+					<li <?php if(isset($tab9)) echo 'class="active"'; ?>><a href="<?php echo site_url('sudo/user'); ?>">Users</a></li>	
 				</ul>
 			</div>
 			<div class="right-content-t">

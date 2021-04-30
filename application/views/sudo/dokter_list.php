@@ -23,6 +23,7 @@
 				<th>Nama Dokter</th>
 				<th>Profesi</th>
 				<th>Status</th>
+				<th>Komentar</th>
 				<th width="20%">Aksi</th>
 			</tr>
 		</thead>
@@ -37,9 +38,11 @@
 					<td><?php echo htmlspecialchars($result->nama_dokter); ?></td>
 					<td><?php echo htmlspecialchars($result->profesi); ?></td>
 					<td><?php echo htmlspecialchars($result->status); ?></td>
+					<td><?php echo $result->total_comment; ?></td>
 					<td>
 						<a href="<?php echo site_url('sudo/dokter/ubah/'.$result->id); ?>"><button type="button" class="btn btn-sm btn-default">Ubah</button></a>
 						<a href="<?php echo site_url('sudo/dokter/hapus/'.$result->id); ?>" onclick="return confirm('Hapus <?php echo htmlspecialchars($result->nama_dokter); ?>?')"><button type="button" class="btn btn-sm btn-danger">Hapus</button></a>
+						<a href="<?php echo site_url('sudo/dokter/detil/'.$result->id); ?>"><button type="button" class="btn btn-sm btn-warning">Detil</button></a>
 					</td>
 				</tr>
 				<?php

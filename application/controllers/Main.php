@@ -44,7 +44,7 @@ class Main extends MY_Controller {
 		}
 
 		//get comments
-		$this->data['comments'] = $this->db->query('SELECT * FROM comment LEFT JOIN user ON user.id=comment.user_id WHERE dokter_id='.$dokterId.' ORDER BY comment.id DESC')->result_array();
+		$this->data['comments'] = $this->db->query('SELECT comment.*, comment.created_at AS comment_date, user.full_name AS full_name FROM comment LEFT JOIN user ON user.id=comment.user_id WHERE dokter_id='.$dokterId.' ORDER BY comment.id DESC')->result_array();
 
 		$this->load->view('layouts/header', $this->data);
 		$this->load->view('jadwal_page', $this->data);

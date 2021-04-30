@@ -13,7 +13,7 @@ class Dokter extends MY_Controller {
 	}
 
 	public function index(){
-		$this->data['query'] = $this->Dokter_m->read(null, 'id', 'DESC');
+		$this->data['query'] = $this->db->query('SELECT dokter.*, (SELECT COUNT(*) FROM comment WHERE comment.dokter_id=dokter.id) AS total_comment FROM dokter LEFT JOIN comment ON comment.dokter_id=dokter.id GROUP BY dokter.id ORDER BY dokter.id DESC');
 
 		$this->load->view('layouts/admin_header', $this->data);
 		$this->load->view('sudo/dokter_list', $this->data);
@@ -57,6 +57,21 @@ class Dokter extends MY_Controller {
 		}
 	}
 
+	public function detil($id){
+		$this->data['query'] = $this->Dokter_m->read(array('id'=>$id), null ,null);
+		if($this->data['query']->num_rows() > 0){
+			$this->data['query'] = $this->data['query']->row_array();
+
+			$this->data['comments'] = $this->db->query('SELECT comment.*, comment.created_at AS comment_date, user.full_name AS full_name FROM comment LEFT JOIN user ON user.id=comment.user_id WHERE dokter_id='.$id.' ORDER BY comment.id DESC')->result_array();
+
+			$this->load->view('layouts/admin_header', $this->data);
+			$this->load->view('sudo/dokter_detil', $this->data);
+			$this->load->view('layouts/admin_footer', $this->data);
+		}else{
+			redirect($_SERVER['HTTP_REFERER']);
+		}
+	}
+
 	public function ubah_proses($id){
 		$nama_dokter = $this->input->post('nama_dokter');
 		$profesi = $this->input->post('profesi');
@@ -87,5 +102,23 @@ class Dokter extends MY_Controller {
 		}else{
 			redirect($_SERVER['HTTP_REFERER']);	
 		}
+	}
+
+	public function post_comment($dokterId){
+		$this->data['dokter'] = $this->db->query('SELECT * FROM dokter WHERE id='.$dokterId)->row_array();
+		if($this->data['dokter']==null){
+			//jadwal dokter not found 
+			redirect(site_url('/sudo/dokter/detil/'.$dokterId.'?report=5'));
+		}
+
+		//insert comment
+		$this->db->insert('comment', array(
+			'user_id' => $this->session->userdata('iduseradmin'),
+			'text' => $this->input->post('comment'),
+			'dokter_id' => $dokterId,
+			'is_admin' => 1
+		));
+
+		redirect(site_url('/sudo/dokter/detil/'.$dokterId.'?report=1'));
 	}
 }

@@ -74,10 +74,10 @@
 						<div class="comment_container">
 							<div class="comment_info">
 								<div class="name">
-									<?php echo $comment['full_name']; ?>
+									<?php echo $comment['is_admin'] ? 'Administrator' : $comment['full_name']; ?>
 								</div>
 								<div class="date">
-									<?php echo date("H:i, d M Y", strtotime($comment['created_at'])); ?>
+									<?php echo date("H:i, d M Y", strtotime($comment['comment_date'])); ?>
 								</div>
 							</div>
 							<div class="comment_text">

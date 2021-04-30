@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
+-- version 4.9.1
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: 21 Agu 2016 pada 09.39
--- Versi Server: 5.6.26
--- PHP Version: 5.6.12
+-- Generation Time: Apr 30, 2021 at 01:39 PM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -23,17 +25,17 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `admin`
+-- Table structure for table `admin`
 --
 
-CREATE TABLE IF NOT EXISTS `admin` (
+CREATE TABLE `admin` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(60) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `admin`
+-- Dumping data for table `admin`
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`) VALUES
@@ -42,18 +44,44 @@ INSERT INTO `admin` (`id`, `username`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `dokter`
+-- Table structure for table `comment`
 --
 
-CREATE TABLE IF NOT EXISTS `dokter` (
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `text` varchar(255) NOT NULL,
+  `created_at` varchar(50) NOT NULL DEFAULT current_timestamp(),
+  `dokter_id` int(11) NOT NULL,
+  `is_admin` smallint(6) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `comment`
+--
+
+INSERT INTO `comment` (`id`, `user_id`, `text`, `created_at`, `dokter_id`, `is_admin`) VALUES
+(8, 1, 'tes', '2021-04-30 18:34:14', 2, 1),
+(9, 2, 'halo mas mau tanya?', '2021-04-30 18:36:15', 2, 0),
+(10, 1, 'iya mau tanya apa?', '2021-04-30 18:38:18', 2, 1),
+(11, 2, 'dokter nya hari rabu praktek ga ya?', '2021-04-30 18:38:30', 2, 0),
+(12, 1, 'oou praktek kok mas', '2021-04-30 18:38:39', 2, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `dokter`
+--
+
+CREATE TABLE `dokter` (
   `id` int(11) NOT NULL,
   `nama_dokter` varchar(100) NOT NULL,
   `profesi` varchar(100) NOT NULL,
   `status` varchar(20) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `dokter`
+-- Dumping data for table `dokter`
 --
 
 INSERT INTO `dokter` (`id`, `nama_dokter`, `profesi`, `status`) VALUES
@@ -62,16 +90,16 @@ INSERT INTO `dokter` (`id`, `nama_dokter`, `profesi`, `status`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `foto`
+-- Table structure for table `foto`
 --
 
-CREATE TABLE IF NOT EXISTS `foto` (
+CREATE TABLE `foto` (
   `id` int(11) NOT NULL,
   `foto` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `foto`
+-- Dumping data for table `foto`
 --
 
 INSERT INTO `foto` (`id`, `foto`) VALUES
@@ -83,18 +111,18 @@ INSERT INTO `foto` (`id`, `foto`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `pekerjaan`
+-- Table structure for table `pekerjaan`
 --
 
-CREATE TABLE IF NOT EXISTS `pekerjaan` (
+CREATE TABLE `pekerjaan` (
   `id` int(11) NOT NULL,
   `foto` varchar(50) NOT NULL,
   `judul` varchar(100) NOT NULL,
   `isi` varchar(255) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `pekerjaan`
+-- Dumping data for table `pekerjaan`
 --
 
 INSERT INTO `pekerjaan` (`id`, `foto`, `judul`, `isi`) VALUES
@@ -106,17 +134,17 @@ INSERT INTO `pekerjaan` (`id`, `foto`, `judul`, `isi`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `profil`
+-- Table structure for table `profil`
 --
 
-CREATE TABLE IF NOT EXISTS `profil` (
+CREATE TABLE `profil` (
   `id` int(11) NOT NULL,
   `foto` varchar(50) NOT NULL,
   `teks_profil` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `profil`
+-- Dumping data for table `profil`
 --
 
 INSERT INTO `profil` (`id`, `foto`, `teks_profil`) VALUES
@@ -125,21 +153,43 @@ INSERT INTO `profil` (`id`, `foto`, `teks_profil`) VALUES
 -- --------------------------------------------------------
 
 --
--- Struktur dari tabel `slider`
+-- Table structure for table `slider`
 --
 
-CREATE TABLE IF NOT EXISTS `slider` (
+CREATE TABLE `slider` (
   `id` int(11) NOT NULL,
   `foto` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data untuk tabel `slider`
+-- Dumping data for table `slider`
 --
 
 INSERT INTO `slider` (`id`, `foto`) VALUES
 (4, '21-08-16-10-47-08.jpg'),
 (5, '21-08-16-10-46-27.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `user`
+--
+
+CREATE TABLE `user` (
+  `id` int(11) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `full_name` varchar(255) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `password` varchar(100) NOT NULL,
+  `is_active` smallint(6) NOT NULL DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `user`
+--
+
+INSERT INTO `user` (`id`, `email`, `full_name`, `created_at`, `password`, `is_active`) VALUES
+(2, 'firhan.faisal1995@gmail.com', 'Firhan Faisal', '2021-04-30 03:08:37', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1);
 
 --
 -- Indexes for dumped tables
@@ -149,6 +199,12 @@ INSERT INTO `slider` (`id`, `foto`) VALUES
 -- Indexes for table `admin`
 --
 ALTER TABLE `admin`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -182,6 +238,12 @@ ALTER TABLE `slider`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -189,32 +251,51 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
 --
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
 --
 -- AUTO_INCREMENT for table `foto`
 --
 ALTER TABLE `foto`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `pekerjaan`
 --
 ALTER TABLE `pekerjaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
 --
 -- AUTO_INCREMENT for table `profil`
 --
 ALTER TABLE `profil`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
 --
 -- AUTO_INCREMENT for table `slider`
 --
 ALTER TABLE `slider`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

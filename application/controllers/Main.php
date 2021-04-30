@@ -35,4 +35,36 @@ class Main extends MY_Controller {
 		$this->load->view('home_page', $this->data);
 		$this->load->view('layouts/footer');
 	}
+
+	public function jadwal($dokterId){		
+		$this->data['dokter'] = $this->db->query('SELECT * FROM dokter WHERE id='.$dokterId)->row_array();
+		if($this->data['dokter']==null){
+			//jadwal dokter not found 
+			redirect(site_url('/?report=5'));
+		}
+
+		//get comments
+		$this->data['comments'] = $this->db->query('SELECT * FROM comment LEFT JOIN user ON user.id=comment.user_id WHERE dokter_id='.$dokterId.' ORDER BY comment.id DESC')->result_array();
+
+		$this->load->view('layouts/header', $this->data);
+		$this->load->view('jadwal_page', $this->data);
+		$this->load->view('layouts/footer');
+	}
+
+	public function post_comment($dokterId){
+		$this->data['dokter'] = $this->db->query('SELECT * FROM dokter WHERE id='.$dokterId)->row_array();
+		if($this->data['dokter']==null){
+			//jadwal dokter not found 
+			redirect(site_url('/?report=5'));
+		}
+
+		//insert comment
+		$this->db->insert('comment', array(
+			'user_id' => $this->session->userdata('id_user'),
+			'text' => $this->input->post('comment'),
+			'dokter_id' => $dokterId
+		));
+
+		redirect(site_url('/main/jadwal/'.$dokterId));
+	}
 }

@@ -73,6 +73,7 @@ $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
 				<th>Nama Dokter</th>
 				<th>Profesi</th>
 				<th width="30%"><center>Status Kehadiran</center></th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -87,6 +88,7 @@ $(document).delegate('*[data-toggle="lightbox"]', 'click', function(event) {
 						echo '<div class="badge2">Tidak Ada</div>';
 					} ?>
 				</td>
+				<td><a href="<?php echo site_url('/main/jadwal/'.$result->id); ?>">Detil</a></td>
 			</tr>
 			<?php } ?>
 		</tbody>

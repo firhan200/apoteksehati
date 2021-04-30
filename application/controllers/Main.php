@@ -62,6 +62,7 @@ class Main extends MY_Controller {
 		$this->db->insert('comment', array(
 			'user_id' => $this->session->userdata('id_user'),
 			'text' => $this->input->post('comment'),
+			'created_at' => date('Y-m-d H:i:s', time() + 3600 * 5),
 			'dokter_id' => $dokterId
 		));
 

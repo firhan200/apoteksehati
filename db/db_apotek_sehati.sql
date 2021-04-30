@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2021 at 01:39 PM
+-- Generation Time: Apr 30, 2021 at 02:06 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -51,7 +51,7 @@ CREATE TABLE `comment` (
   `id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL,
   `text` varchar(255) NOT NULL,
-  `created_at` varchar(50) NOT NULL DEFAULT current_timestamp(),
+  `created_at` varchar(50) NOT NULL,
   `dokter_id` int(11) NOT NULL,
   `is_admin` smallint(6) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -61,11 +61,8 @@ CREATE TABLE `comment` (
 --
 
 INSERT INTO `comment` (`id`, `user_id`, `text`, `created_at`, `dokter_id`, `is_admin`) VALUES
-(8, 1, 'tes', '2021-04-30 18:34:14', 2, 1),
-(9, 2, 'halo mas mau tanya?', '2021-04-30 18:36:15', 2, 0),
-(10, 1, 'iya mau tanya apa?', '2021-04-30 18:38:18', 2, 1),
-(11, 2, 'dokter nya hari rabu praktek ga ya?', '2021-04-30 18:38:30', 2, 0),
-(12, 1, 'oou praktek kok mas', '2021-04-30 18:38:39', 2, 1);
+(22, 2, 'test', '2021-04-30 19:05:50', 2, 0),
+(23, 1, 'iyaa?', '2021-04-30 19:06:07', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -257,7 +254,7 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `dokter`

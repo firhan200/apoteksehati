@@ -116,6 +116,7 @@ class Dokter extends MY_Controller {
 			'user_id' => $this->session->userdata('iduseradmin'),
 			'text' => $this->input->post('comment'),
 			'dokter_id' => $dokterId,
+			'created_at' => date('Y-m-d H:i:s', time() + 3600 * 5),
 			'is_admin' => 1
 		));
 

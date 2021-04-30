@@ -45,12 +45,16 @@
 						</div>
 						<div class="collapse navbar-collapse" id="myNavbar">
 							<ul class="nav navbar-nav navbar-right">
-								<li><a href="#slider" class="page-scroll">Beranda</a></li>							
-								<li><a href="#pekerjaan" class="page-scroll">Pekerjaan</a></li>	
-								<li><a href="#profil" class="page-scroll">Profil</a></li>						
-								<li><a href="#jadwal-dokter" class="page-scroll">Dokter</a></li>							
-								<li><a href="#foto" class="page-scroll">Foto</a></li>
-								<li><a href="#footer" class="page-scroll">Hubungi Kami</a></li>			
+								<?php if(!isset($reset_nav)){ ?>
+									<li><a href="#slider" class="page-scroll">Beranda</a></li>							
+									<li><a href="#pekerjaan" class="page-scroll">Pekerjaan</a></li>	
+									<li><a href="#profil" class="page-scroll">Profil</a></li>						
+									<li><a href="#jadwal-dokter" class="page-scroll">Dokter</a></li>							
+									<li><a href="#foto" class="page-scroll">Foto</a></li>
+									<li><a href="#footer" class="page-scroll">Hubungi Kami</a></li>		
+								<?php }else{ ?>
+									<li><a href="<?php echo site_url('/') ?>" class="page-scroll">< Kembali ke Beranda</a></li>	
+								<?php } ?>
 								<?php if(!$this->session->userdata('id_user')){ ?>							
 								<li><a href="<?php echo site_url('/user/daftar'); ?>" class="page-scroll">Daftar</a></li>										
 								<li><a href="<?php echo site_url('/user/masuk'); ?>" class="page-scroll">Masuk</a></li>	

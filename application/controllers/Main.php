@@ -37,6 +37,7 @@ class Main extends MY_Controller {
 	}
 
 	public function jadwal($dokterId){		
+		$this->data['reset_nav'] = true;
 		$this->data['dokter'] = $this->db->query('SELECT * FROM dokter WHERE id='.$dokterId)->row_array();
 		if($this->data['dokter']==null){
 			//jadwal dokter not found 
@@ -52,6 +53,7 @@ class Main extends MY_Controller {
 	}
 
 	public function post_comment($dokterId){
+		$this->data['reset_nav'] = true;
 		$this->data['dokter'] = $this->db->query('SELECT * FROM dokter WHERE id='.$dokterId)->row_array();
 		if($this->data['dokter']==null){
 			//jadwal dokter not found 

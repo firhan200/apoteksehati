@@ -95,6 +95,9 @@ class Dokter extends MY_Controller {
 		if($query->num_rows() > 0){
 			$delete = $this->Dokter_m->delete(array('id'=>$id));
 			if($delete){
+				//hapus comment
+				$this->db->query('DELETE FROM comment WHERE dokter_id='.$id);
+
 				redirect(site_url('sudo/dokter/?balasan=1'));
 			}else{
 				redirect(site_url('sudo/dokter/?balasan=1'));

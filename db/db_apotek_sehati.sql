@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 30, 2021 at 02:06 PM
+-- Generation Time: May 14, 2021 at 01:40 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -115,18 +115,20 @@ CREATE TABLE `pekerjaan` (
   `id` int(11) NOT NULL,
   `foto` varchar(50) NOT NULL,
   `judul` varchar(100) NOT NULL,
-  `isi` varchar(255) NOT NULL
+  `isi` varchar(255) NOT NULL,
+  `foto2` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pekerjaan`
 --
 
-INSERT INTO `pekerjaan` (`id`, `foto`, `judul`, `isi`) VALUES
-(4, '20-08-16-13-18-23.jpg', 'KONSULTASI DOKTER', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.'),
-(5, '20-08-16-13-21-03.jpg', 'AMBIL DARAH', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.'),
-(6, '20-08-16-13-21-41.jpg', 'AMBIL DARAH', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.'),
-(7, '20-08-16-13-21-49.jpg', 'TES 123', 'asLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.');
+INSERT INTO `pekerjaan` (`id`, `foto`, `judul`, `isi`, `foto2`) VALUES
+(4, '20-08-16-13-18-23.jpg', 'KONSULTASI DOKTER', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.', NULL),
+(5, '20-08-16-13-21-03.jpg', 'AMBIL DARAH', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.', NULL),
+(6, '20-08-16-13-21-41.jpg', 'AMBIL DARAH', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.', NULL),
+(7, '20-08-16-13-21-49.jpg', 'TES 123', 'asLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.', NULL),
+(9, '14-05-21-18-40-29.jpg', 'test', 'asdas', '14-05-21-18-40-29_2.jpg');
 
 -- --------------------------------------------------------
 
@@ -254,13 +256,13 @@ ALTER TABLE `admin`
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `dokter`
 --
 ALTER TABLE `dokter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `foto`
@@ -272,7 +274,7 @@ ALTER TABLE `foto`
 -- AUTO_INCREMENT for table `pekerjaan`
 --
 ALTER TABLE `pekerjaan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `profil`

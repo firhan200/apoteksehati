@@ -21,6 +21,7 @@
 			<tr>
 				<th width="5%">No</th>
 				<th>ikon</th>
+				<th>ikon 2</th>
 				<th>judul</th>
 				<th width="30%">konten</th>
 				<th width="20%">Aksi</th>
@@ -35,6 +36,7 @@
 				<tr>
 					<td><?php echo $no; ?></td>
 					<td><img src="<?php echo base_url('assets/img/ikon/'.$result->foto); ?>" class="img-responsive img-thumbnail img-sm"></td>
+					<td><img src="<?php echo base_url('assets/img/ikon2/'.$result->foto2); ?>" class="img-responsive img-thumbnail img-sm"></td>
 					<td><?php echo htmlspecialchars($result->judul); ?></td>
 					<td><?php echo htmlspecialchars($result->isi); ?></td>
 					<td>

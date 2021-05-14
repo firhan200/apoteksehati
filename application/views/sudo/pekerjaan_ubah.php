@@ -36,6 +36,22 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label class="control-label col-sm-2">Foto Ikon 2 Sebelumnya</label>
+			<div class="col-sm-4">
+				<img src="<?php echo base_url('assets/img/ikon2/'.$query['foto2']); ?>" class="img-responsive img-thumbnail img-sm">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2">Ikon 2</label>
+			<div class="col-sm-4">
+				<input type="file" name="foto2" class="form-control">
+				<div class="help">
+					<b>*Kosongkan field ikon 2 apabila tidak ingin merubah ikon 2</b><br/>
+					Ukuran maksimal 2MB bertipe .jpg atau .png
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
 			<label class="control-label col-sm-2">Judul</label>
 			<div class="col-sm-4" style="margin-top:5px;">
 				<input type="text" name="judul" maxlength="100" value="<?php echo htmlspecialchars($query['judul']) ?>" class="form-control" placeholder="KONSULTASI DOKTER" required>

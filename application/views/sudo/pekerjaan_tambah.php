@@ -29,6 +29,15 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label class="control-label col-sm-2">Ikon 2</label>
+			<div class="col-sm-4">
+				<input type="file" name="foto2" class="form-control" required>
+				<div class="help">
+					Ukuran maksimal 2MB bertipe .jpg atau .png
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
 			<label class="control-label col-sm-2">Judul</label>
 			<div class="col-sm-4" style="margin-top:5px;">
 				<input type="text" name="judul" maxlength="100" class="form-control" placeholder="KONSULTASI DOKTER" required>

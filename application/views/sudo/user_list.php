@@ -19,6 +19,7 @@
 				<th width="5%">No</th>
 				<th>Nama</th>
 				<th>Email</th>
+				<th>Request Reset Password</th>
 				<th>Aktif</th>
 				<th width="20%">Aksi</th>
 			</tr>
@@ -33,10 +34,14 @@
 					<td><?php echo $no; ?></td>
 					<td><?php echo $result->full_name; ?></td>
 					<td><?php echo $result->email; ?></td>
+					<td><?php echo $result->request_reset_password != null ? date("H:i, d M Y", strtotime($result->request_reset_password)) : "-"; ?></td>
 					<td><?php echo $result->is_active ? 'Aktif' : 'Tidak Aktif'; ?></td>
 					<td>
 						<a href="<?php echo site_url('sudo/user/ubah/'.$result->id); ?>"><button type="button" class="btn btn-sm btn-default">Ubah</button></a>
 						<a href="<?php echo site_url('sudo/user/hapus/'.$result->id); ?>" onclick="return confirm('Hapus user?')"><button type="button" class="btn btn-sm btn-danger">Hapus</button></a>
+						<?php if($result->request_reset_password != null){ ?>
+						<a href="<?php echo site_url('sudo/user/reset_password/'.$result->id); ?>"><button type="button" class="btn btn-sm btn-warning">Reset Password</button></a>
+						<?php } ?>
 					</td>
 				</tr>
 				<?php

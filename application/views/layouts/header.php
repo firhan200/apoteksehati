@@ -63,6 +63,7 @@
 									<a class="dropdown-toggle" data-toggle="dropdown" href="#"><?php echo $this->session->userdata('nama_user'); ?>
 									<span class="caret"></span></a>
 									<ul class="dropdown-menu">
+									<li><a href="<?php echo site_url('/user/change_password'); ?>" class="page-scroll">Ganti Password</a></li>
 									<li><a href="<?php echo site_url('/user/logout'); ?>" class="page-scroll">Keluar</a></li>
 									</ul>
 								</li>										

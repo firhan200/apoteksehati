@@ -61,4 +61,42 @@ class User extends MY_Controller {
 			redirect($_SERVER['HTTP_REFERER']);	
 		}
 	}
+
+	public function reset_password($id){
+		$this->data['query'] = $this->db->query('SELECT * FROM user WHERE id='.$id)->row_array();
+		
+		if($this->data['query']==null){
+			redirect(site_url('/sudo/user'));
+		}
+
+		$this->load->view('layouts/admin_header', $this->data);
+		$this->load->view('sudo/user_reset_password', $this->data);
+		$this->load->view('layouts/admin_footer', $this->data);
+	}
+
+	public function reset_password_proses($id){
+		$this->data['query'] = $this->db->query('SELECT * FROM user WHERE id='.$id)->row_array();
+		
+		if($this->data['query']==null){
+			redirect(site_url('/sudo/user'));
+		}
+
+		//get data
+		$password = sha1($this->input->post('password'));
+		$confirm_password = sha1($this->input->post('confirm_password'));
+
+		//validation
+		if($password==$confirm_password){
+			//update
+			$this->db->where('id', $id);
+			$this->db->update('user', array(
+				'password' => $password,
+				'request_reset_password' => null
+			));
+
+			redirect(site_url('sudo/user/reset_password/'.$id.'/?balasan=1'));
+		}else{
+			redirect(site_url('sudo/user/reset_password/'.$id.'/?balasan=2'));
+		}
+	}
 }

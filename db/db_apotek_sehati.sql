@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2021 at 01:40 PM
+-- Generation Time: May 18, 2021 at 07:47 PM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.10
 
@@ -128,7 +128,7 @@ INSERT INTO `pekerjaan` (`id`, `foto`, `judul`, `isi`, `foto2`) VALUES
 (5, '20-08-16-13-21-03.jpg', 'AMBIL DARAH', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.', NULL),
 (6, '20-08-16-13-21-41.jpg', 'AMBIL DARAH', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.', NULL),
 (7, '20-08-16-13-21-49.jpg', 'TES 123', 'asLorem ipsum dolor sit amet, consectetur adipiscing elit. Sed sed convallis tellus. Donec fringilla id ipsum sed ultrices. Fusce blandit dolor mi. Nunc fermentum varius lorem eu vehicula. Nullam sollicitudin tortor eu placerat pharetra.', NULL),
-(9, '14-05-21-18-40-29.jpg', 'test', 'asdas', '14-05-21-18-40-29_2.jpg');
+(9, '14-05-21-18-45-02.jpg', 'test 123', 'hello', '14-05-21-18-45-18_2.jpg');
 
 -- --------------------------------------------------------
 
@@ -180,15 +180,17 @@ CREATE TABLE `user` (
   `full_name` varchar(255) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
   `password` varchar(100) NOT NULL,
-  `is_active` smallint(6) NOT NULL DEFAULT 0
+  `is_active` smallint(6) NOT NULL DEFAULT 0,
+  `request_reset_password` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `email`, `full_name`, `created_at`, `password`, `is_active`) VALUES
-(2, 'firhan.faisal1995@gmail.com', 'Firhan Faisal', '2021-04-30 03:08:37', '40bd001563085fc35165329ea1ff5c5ecbdbbeef', 1);
+INSERT INTO `user` (`id`, `email`, `full_name`, `created_at`, `password`, `is_active`, `request_reset_password`) VALUES
+(2, 'firhan.faisal1995@gmail.com', 'Firhan Faisal', '2021-05-18 17:46:55', '7c222fb2927d828af22f592134e8932480637c0d', 1, NULL),
+(3, 'firhan@gmail.com', 'Firhan Faisal', '2021-05-18 17:20:52', 'addbd3aa5619f2932733104eb8ceef08f6fd2693', 1, NULL);
 
 --
 -- Indexes for dumped tables
@@ -292,7 +294,7 @@ ALTER TABLE `slider`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -24,5 +24,6 @@
 			<input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Sandi" required>
 		</div>
 		<button type="submit" class="btn btn-primary">Login</button>
+		<a href="<?php echo site_url('/user/forgot_password'); ?>">Lupa Password?!</a>
 	</form>
 </div>
